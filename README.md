@@ -5,7 +5,7 @@ This program was created to validate your xml files to the OCN modules. This pro
 
 How to install and use
 ======================
-1. Go to the releases section of this repository found here
+1. Go to the releases section of this repository found [here](https://github.com/CaptainElliott/XMLValidator/releases)
 2. Extract the file to a suitable place
 3. Run the run.bat file and a command prompt screen and GUI should pop up.
 4. Select your XML file using the GUI and the file chooser.
@@ -23,4 +23,3 @@ All if the OCN modules are supported except for the following:
 - Mobs 
 
 I your file contains any of these the comment them out temporarily so true validator does bot show an invalid XML file.
-
