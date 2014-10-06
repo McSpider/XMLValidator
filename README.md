@@ -1,7 +1,7 @@
 XMLValidator
 ============
 
-This program was created invalidate your xml files to the OCN modules. This program is not designed to make your XML files perfect but it should make then syntaxually correct so there are a lot fewer errors that the mapdevs have to fix. 
+This program was created to validate your xml files to the OCN modules. This program is not designed to make your XML files perfect but it should make them syntaxually correct so there are a lot fewer errors that the mapdevs have to spend time fixing when they could be doing more productive thigs. 
 
 How to install and use
 ======================
