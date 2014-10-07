@@ -1,7 +1,7 @@
 XMLValidator
 ============
 
-This program was created to validate your xml files to the OCN modules. This program is not designed to make your XML files perfect but it should make them syntaxually correct so there are a lot fewer errors that the mapdevs have to spend time fixing when they could be doing more productive thigs. 
+This program was created to validate your XML files to the OCN modules. This program is not designed to make your XML files perfect but it should make them syntactically correct so there are a lot fewer errors that the mapdevs have to spend time fixing when they could be doing more productive things. 
 
 How to install and use
 ======================
@@ -16,10 +16,10 @@ Supported Modules
 
 All if the OCN modules are supported except for the following:
 
-- DEstroyables 
+- Destroyables 
 - Wools
 - KotH
 - Classes
 - Mobs 
 
-I your file contains any of these the comment them out temporarily so true validator does bot show an invalid XML file.
+If your file contains any of these the comment them out temporarily so the validator does not show an invalid XML file.
