@@ -18,6 +18,8 @@ public class Validator {
 		gui.setSize(450,250);
 		gui.setVisible(true);
 		
+	
+		
 	}
 	
 

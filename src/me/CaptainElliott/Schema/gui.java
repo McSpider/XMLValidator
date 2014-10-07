@@ -20,7 +20,7 @@ public class gui extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public static String version = "Dev 1.0";
+	public static String version = "Dev 0.2";
 
 	final JFrame frame = new JFrame();
 
