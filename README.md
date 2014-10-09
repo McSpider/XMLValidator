@@ -14,7 +14,7 @@ How to install and use
 Supported Modules
 =================
 
-All if the OCN modules are supported except for the following:
+All of the OCN modules are supported except for the following:
 
 - Destroyables 
 - Wools
@@ -22,4 +22,4 @@ All if the OCN modules are supported except for the following:
 - Classes
 - Mobs 
 
-If your file contains any of these the comment them out temporarily so the validator does not show an invalid XML file.
+If your file contains any of these then comment them out temporarily so the validator does not show an invalid XML file.
