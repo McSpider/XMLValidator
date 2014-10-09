@@ -21,7 +21,7 @@
 						</xs:sequence>
 					</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="contributors" maxOccurs="unbounded" minOccurs="0">
+	    		<xs:element name="contributors" minOccurs="0" maxOccurs="1">
 	    		 	<xs:complexType>
 		    		 	<xs:sequence>
 			    		 	<xs:element name="contributor" minOccurs="0" maxOccurs="unbounded">
@@ -136,7 +136,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="wools" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="wools" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="wool" minOccurs="0" maxOccurs="unbounded">
@@ -157,7 +157,7 @@
 						<xs:attribute name="show" type="xs:boolean"/>
 	    			</xs:complexType>
 	    		</xs:element>	    		
-	    		<xs:element name="cores" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="cores" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="core" minOccurs="0" maxOccurs="unbounded">
@@ -181,7 +181,7 @@
 						<xs:attribute name="mode-changes" type="xs:boolean"/>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="destroyables" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="destroyables" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="destroyable" minOccurs="0" maxOccurs="unbounded">
@@ -231,7 +231,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="blitz" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="blitz" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="time" minOccurs="0" maxOccurs="unbounded">
@@ -332,14 +332,14 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="toolrepair" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="toolrepair" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="tool" type="xs:string"/>
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="itemremove" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="itemremove" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="item" minOccurs="0" maxOccurs="unbounded">
@@ -360,7 +360,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="itemkeep" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="itemkeep" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="item" minOccurs="0" maxOccurs="unbounded">
@@ -381,7 +381,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="disabledamage" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="disabledamage" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="damage" minOccurs="0" maxOccurs="unbounded">
@@ -399,7 +399,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="modifybowprojectile">
+	    		<xs:element name="modifybowprojectile" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="projectile" type="entities"/>
@@ -418,7 +418,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="tnt">
+	    		<xs:element name="tnt" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="instantignite" minOccurs="0" maxOccurs="unbounded">
@@ -485,7 +485,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="mobs" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="mobs" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
@@ -500,7 +500,7 @@
 	    				</xs:sequence>
 	    			</xs:complexType>
 	    		</xs:element>
-	    		<xs:element name="killreward" minOccurs="0" maxOccurs="unbounded">
+	    		<xs:element name="killreward" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:sequence>
 	    					<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
@@ -573,7 +573,7 @@
     					</xs:restriction>
 	    			</xs:simpleType>
 	    		</xs:element>
-	    		<xs:element name="regions">
+	    		<xs:element name="regions" minOccurs="0" maxOccurs="1">
 	    			<xs:complexType>
 	    				<xs:complexContent>
 	    					<xs:extension base="Regions">
