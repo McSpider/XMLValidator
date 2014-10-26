@@ -6,6 +6,7 @@
 				<xs:element name="name" type="xs:string" maxOccurs="1" minOccurs="1" />
 				<xs:element name="version" type="xs:string" maxOccurs="1" minOccurs="1" />
 				<xs:element name="objective" type="xs:string" maxOccurs="1" minOccurs="1" />
+
 				<xs:element name="authors" maxOccurs="1" minOccurs="0">
 					<xs:complexType>
 						<xs:sequence>
@@ -21,6 +22,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="contributors" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -36,6 +38,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="rules" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -43,6 +46,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="broadcasts" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:choice maxOccurs="unbounded">
@@ -50,8 +54,8 @@
 								<xs:complexType>
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
-											<xs:attribute name="after" type="TimePeriod"/>
-											<xs:attribute name="every" type="TimePeriod"/>
+											<xs:attribute name="after" type="timePeriod"/>
+											<xs:attribute name="every" type="timePeriod"/>
 											<xs:attribute name="count">
 												<xs:simpleType>
 													<xs:restriction base="xs:string">
@@ -67,8 +71,8 @@
 								<xs:complexType>
 									<xs:simpleContent>
 										<xs:extension base="xs:string">
-											<xs:attribute name="after" type="TimePeriod"/>
-											<xs:attribute name="every" type="TimePeriod"/>
+											<xs:attribute name="after" type="timePeriod"/>
+											<xs:attribute name="every" type="timePeriod"/>
 											<xs:attribute name="count">
 												<xs:simpleType>
 													<xs:restriction base="xs:string">
@@ -83,6 +87,7 @@
 						</xs:choice>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="teams" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -100,13 +105,14 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="kits" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="kit" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="Types">
+										<xs:extension base="KitTypes">
 											<xs:attribute name="name" type="xs:string" />
 											<xs:attribute name="parents" type="xs:string" />
 											<xs:attribute name="force" type="xs:boolean" />
@@ -118,17 +124,35 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="spawns" maxOccurs="1" minOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="spawn" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="Regions">
+										<xs:extension base="regionTypes">
 											<xs:attribute name="team" type="xs:string"/>
 											<xs:attribute name="safe" type="xs:boolean"/>
 											<xs:attribute name="sequential" type="xs:boolean"/>
 											<xs:attribute name="kit" type="xs:string"/>
+											<xs:attribute name="yaw" type="xs:integer"/>
+											<xs:attribute name="pitch" type="xs:integer"/>
+											<xs:attribute name="angle" type="xs:string"/>
+										</xs:extension>
+									</xs:complexContent>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="default" maxOccurs="1" minOccurs="1">
+								<xs:complexType>
+									<xs:complexContent>
+										<xs:extension base="regionTypes">
+											<xs:attribute name="safe" type="xs:boolean"/>
+											<xs:attribute name="sequential" type="xs:boolean"/>
+											<xs:attribute name="kit" type="xs:string"/>
+											<xs:attribute name="yaw" type="xs:integer"/>
+											<xs:attribute name="pitch" type="xs:integer"/>
+											<xs:attribute name="angle" type="xs:string"/>
 										</xs:extension>
 									</xs:complexContent>
 								</xs:complexType>
@@ -136,6 +160,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="wools" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -157,13 +182,14 @@
 						<xs:attribute name="show" type="xs:boolean"/>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="cores" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="core" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="Regions">
+										<xs:extension base="regionTypes">
 											<xs:attribute name="leak" type="xs:integer"/>
 											<xs:attribute name="material" type="xs:string"/>
 											<xs:attribute name="team" type="xs:string"/>
@@ -181,13 +207,14 @@
 						<xs:attribute name="mode-changes" type="xs:boolean"/>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="destroyables" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="destroyable" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="Regions">
+										<xs:extension base="regionTypes">
 											<xs:attribute name="name" type="xs:string"/>
 											<xs:attribute name="materials" type="xs:string"/>
 											<xs:attribute name="owner" type="xs:string"/>
@@ -223,6 +250,7 @@
 						<xs:attribute name="sparks" type="xs:boolean"/>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="score" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
@@ -231,6 +259,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="blitz" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -247,16 +276,24 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="include" type="includes" minOccurs="0" maxOccurs="unbounded"/>
+
+				<xs:element name="include" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="src" type="includeValues"/>
+					</xs:complexType>
+				</xs:element>
+
 				<xs:element name="ghostsquadron" minOccurs="0" maxOccurs="1"/>
+
 				<xs:element name="rage" minOccurs="0" maxOccurs="1"/>
+
 				<xs:element name="tutorial" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="stage" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="TutorialType">
+										<xs:extension base="tutorialType">
 											<xs:attribute name="title" type="xs:string"/>
 										</xs:extension>
 									</xs:complexContent>
@@ -265,6 +302,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="king" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -274,9 +312,9 @@
 										<xs:element name="hill" minOccurs="0" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
-													<xs:element name="capture" minOccurs="0" maxOccurs="unbounded" type="Regions"/>
-													<xs:element name="progress" minOccurs="0" maxOccurs="unbounded" type="Regions"/>
-													<xs:element name="captured" minOccurs="0" maxOccurs="unbounded" type="Regions"/>
+													<xs:element name="capture" minOccurs="0" maxOccurs="unbounded" type="regionTypes"/>
+													<xs:element name="progress" minOccurs="0" maxOccurs="unbounded" type="regionTypes"/>
+													<xs:element name="captured" minOccurs="0" maxOccurs="unbounded" type="regionTypes"/>
 													<xs:element name="capture-filter" minOccurs="0" maxOccurs="unbounded">
 														<xs:complexType>
 															<xs:attribute name="filter" type="xs:string"/>
@@ -289,7 +327,7 @@
 													</xs:element>
 												</xs:sequence>
 												<xs:attribute name="name" type="xs:string"/>
-												<xs:attribute name="capture-time" type="TimePeriod"/>
+												<xs:attribute name="capture-time" type="timePeriod"/>
 												<xs:attribute name="points" type="xs:integer"/>
 												<xs:attribute name="points-growth" type="xs:integer"/>
 												<xs:attribute name="capture-rule">
@@ -310,7 +348,7 @@
 										</xs:element>
 									</xs:sequence>
 									<xs:attribute name="name" type="xs:string"/>
-									<xs:attribute name="capture-time" type="TimePeriod"/>
+									<xs:attribute name="capture-time" type="timePeriod"/>
 									<xs:attribute name="points" type="xs:integer"/>
 									<xs:attribute name="points-growth" type="xs:integer"/>
 									<xs:attribute name="capture-rule">
@@ -332,13 +370,15 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="toolrepair" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="tool" type="xs:string"/>
+							<xs:element name="tool" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="itemremove" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -360,6 +400,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="itemkeep" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -381,13 +422,14 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="disabledamage" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="damage" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:simpleContent>
-										<xs:extension base="damage">
+										<xs:extension base="damageTypes">
 											<xs:attribute name="ally" type="xs:boolean"/>
 											<xs:attribute name="self" type="xs:boolean"/>
 											<xs:attribute name="enemy" type="xs:boolean"/>
@@ -399,15 +441,16 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="modifybowprojectile" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="projectile" type="entities"/>
+							<xs:element name="projectile" type="entityTypes"/>
 							<xs:element name="velocityMod" type="xs:double"/>
 							<xs:element name="potion" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:simpleContent>
-										<xs:extension base="potions">
+										<xs:extension base="potionTypes">
 											<xs:attribute name="duration" type="xs:integer"/>
 											<xs:attribute name="amplifier" type="xs:integer"/>
 											<xs:attribute name="ambient" type="xs:boolean"/>
@@ -418,21 +461,18 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="tnt" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="instantignite" minOccurs="0" maxOccurs="unbounded">
 								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:pattern value="on|off"/>
-									</xs:restriction>
+									<xs:restriction base="booleanValue"/>
 								</xs:simpleType>
 							</xs:element>
 							<xs:element name="blockdamage" minOccurs="0" maxOccurs="unbounded">
 								<xs:simpleType>
-									<xs:restriction base="xs:string">
-										<xs:pattern value="on|off"/>
-									</xs:restriction>
+									<xs:restriction base="booleanValue"/>
 								</xs:simpleType>
 							</xs:element>
 							<xs:element name="yield" minOccurs="0" maxOccurs="unbounded">
@@ -451,7 +491,7 @@
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:element>
-							<xs:element name="fuse" minOccurs="0" maxOccurs="unbounded" type="TimePeriod"/>
+							<xs:element name="fuse" minOccurs="0" maxOccurs="unbounded" type="timePeriod"/>
 							<xs:element name="dispenser-tnt-limit" minOccurs="0" maxOccurs="unbounded">
 								<xs:simpleType>
 									<xs:restriction base="xs:positiveInteger">
@@ -470,13 +510,14 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="filters" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="FilterTypes">
+										<xs:extension base="filterTypes">
 											<xs:attribute name="name" type="xs:string"/>
 										</xs:extension>
 									</xs:complexContent>
@@ -485,13 +526,14 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="mobs" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="MobFilterTypes">
+										<xs:extension base="mobfilterTypes">
 											<xs:attribute name="name" type="xs:string"/>
 										</xs:extension>
 									</xs:complexContent>
@@ -500,13 +542,14 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="killreward" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="FilterTypes">
+										<xs:extension base="filterTypes">
 											<xs:attribute name="name" type="xs:string"/>
 										</xs:extension>
 									</xs:complexContent>
@@ -531,6 +574,7 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="gamerules" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
@@ -543,28 +587,27 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="timelock" minOccurs="0" maxOccurs="1">
 					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:pattern value="on|off"/>
-						</xs:restriction>
+						<xs:restriction base="booleanValue"/>
 					</xs:simpleType>
 				</xs:element>
+
 				<xs:element name="maxbuildheight" type="xs:positiveInteger" minOccurs="0" maxOccurs="1"/>
+
 				<xs:element name="friendlyfire" minOccurs="0" maxOccurs="1">
 					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:pattern value="on|off"/>
-						</xs:restriction>
+						<xs:restriction base="booleanValue"/>
 					</xs:simpleType>
 				</xs:element>
+
 				<xs:element name="friendlyfirefund" minOccurs="0" maxOccurs="1">
 					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:pattern value="on|off"/>
-						</xs:restriction>
+						<xs:restriction base="booleanValue"/>
 					</xs:simpleType>
 				</xs:element>
+
 				<xs:element name="difficulty" minOccurs="0" maxOccurs="1">
 					<xs:simpleType>
 						<xs:restriction base="xs:integer">
@@ -573,15 +616,16 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
+
 				<xs:element name="regions" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:complexContent>
-							<xs:extension base="Regions">
+							<xs:extension base="regionTypes">
 								<xs:sequence>
 									<xs:element name="apply" minOccurs="0" maxOccurs="unbounded">
 										<xs:complexType>
 											<xs:complexContent>
-												<xs:extension base="Regions">
+												<xs:extension base="regionTypes">
 													<xs:attribute name="enter" type="xs:string"/>
 													<xs:attribute name="leave" type="xs:string"/>
 													<xs:attribute name="block" type="xs:string"/>
@@ -601,13 +645,14 @@
 						</xs:complexContent>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="portals" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="portal" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="Regions">
+										<xs:extension base="regionTypes">
 											<xs:attribute name="x" type="xs:integer"/>
 											<xs:attribute name="y" type="xs:integer"/>
 											<xs:attribute name="z" type="xs:integer"/>
@@ -624,13 +669,14 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="score" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="box" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:complexContent>
-										<xs:extension base="Regions">
+										<xs:extension base="regionTypes">
 											<xs:attribute name="value" type="xs:integer"/>
 											<xs:attribute name="team" type="xs:string"/>
 											<xs:attribute name="filter" type="xs:string"/>
@@ -642,12 +688,13 @@
 						</xs:sequence>
 					</xs:complexType>
 				</xs:element>
+
 				<xs:element name="modes" minOccurs="0" maxOccurs="1">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="mode" minOccurs="0" maxOccurs="unbounded">
 								<xs:complexType>
-									<xs:attribute name="after" type="TimePeriod"/>
+									<xs:attribute name="after" type="timePeriod"/>
 									<xs:attribute name="material" type="xs:string"/>
 									<xs:attribute name="name" type="xs:string"/>
 									<xs:attribute name="show-before" type="xs:string"/>
@@ -657,11 +704,16 @@
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
+
 			<xs:attribute name="proto" type="xs:string" />
 		</xs:complexType>
 	</xs:element>
 
-	<xs:complexType name="Types" mixed="true">
+
+
+	<!-- Data types and element bases -->
+	<!-- ---------------------------- -->
+	<xs:complexType name="KitTypes" mixed="true">
 		<xs:sequence>
 			<xs:element name="item" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
@@ -669,8 +721,47 @@
 						<xs:extension base="xs:string">
 							<xs:attribute name="slot">
 								<xs:simpleType>
-									<xs:restriction base="xs:positiveInteger">
-										<xs:maxInclusive value="103" />
+									<xs:restriction base="xs:nonNegativeInteger">
+										<xs:enumeration value="0"/>
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+										<xs:enumeration value="3"/>
+										<xs:enumeration value="4"/>
+										<xs:enumeration value="5"/>
+										<xs:enumeration value="6"/>
+										<xs:enumeration value="7"/>
+										<xs:enumeration value="8"/>
+										<xs:enumeration value="9"/>
+										<xs:enumeration value="10"/>
+										<xs:enumeration value="11"/>
+										<xs:enumeration value="12"/>
+										<xs:enumeration value="13"/>
+										<xs:enumeration value="14"/>
+										<xs:enumeration value="15"/>
+										<xs:enumeration value="16"/>
+										<xs:enumeration value="17"/>
+										<xs:enumeration value="18"/>
+										<xs:enumeration value="19"/>
+										<xs:enumeration value="20"/>
+										<xs:enumeration value="21"/>
+										<xs:enumeration value="22"/>
+										<xs:enumeration value="23"/>
+										<xs:enumeration value="24"/>
+										<xs:enumeration value="25"/>
+										<xs:enumeration value="26"/>
+										<xs:enumeration value="27"/>
+										<xs:enumeration value="28"/>
+										<xs:enumeration value="29"/>
+										<xs:enumeration value="30"/>
+										<xs:enumeration value="31"/>
+										<xs:enumeration value="32"/>
+										<xs:enumeration value="33"/>
+										<xs:enumeration value="34"/>
+										<xs:enumeration value="35"/>
+										<xs:enumeration value="100"/>
+										<xs:enumeration value="101"/>
+										<xs:enumeration value="102"/>
+										<xs:enumeration value="103"/>
 									</xs:restriction>
 								</xs:simpleType>
 							</xs:attribute>
@@ -718,13 +809,6 @@
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
 							<xs:attribute name="locked" type="xs:boolean"/>
-							<xs:attribute name="slot">
-								<xs:simpleType>
-									<xs:restriction base="xs:positiveInteger">
-										<xs:maxInclusive value="103" />
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:attribute>
 							<xs:attribute name="amount" type="xs:integer" />
 							<xs:attribute name="name" type="xs:string" />
 							<xs:attribute name="enchantment" type="xs:string" />
@@ -736,18 +820,12 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
+
 			<xs:element name="chestplate" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
 							<xs:attribute name="locked" type="xs:boolean"/>
-							<xs:attribute name="slot">
-								<xs:simpleType>
-									<xs:restriction base="xs:positiveInteger">
-										<xs:maxInclusive value="103" />
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:attribute>
 							<xs:attribute name="amount" type="xs:integer" />
 							<xs:attribute name="name" type="xs:string" />
 							<xs:attribute name="enchantment" type="xs:string" />
@@ -759,18 +837,12 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
+
 			<xs:element name="leggings" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
 							<xs:attribute name="locked" type="xs:boolean"/>
-							<xs:attribute name="slot">
-								<xs:simpleType>
-									<xs:restriction base="xs:positiveInteger">
-										<xs:maxInclusive value="103" />
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:attribute>
 							<xs:attribute name="amount" type="xs:integer" />
 							<xs:attribute name="name" type="xs:string" />
 							<xs:attribute name="enchantment" type="xs:string" />
@@ -782,18 +854,12 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
+
 			<xs:element name="boots" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
 							<xs:attribute name="locked" type="xs:boolean"/>
-							<xs:attribute name="slot">
-								<xs:simpleType>
-									<xs:restriction base="xs:positiveInteger">
-										<xs:maxInclusive value="103" />
-									</xs:restriction>
-								</xs:simpleType>
-							</xs:attribute>
 							<xs:attribute name="amount" type="xs:integer" />
 							<xs:attribute name="name" type="xs:string" />
 							<xs:attribute name="enchantment" type="xs:string" />
@@ -805,10 +871,11 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
+
 			<xs:element name="potion" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
-						<xs:extension base="potions">
+						<xs:extension base="potionTypes">
 							<xs:attribute name="duration" type="xs:integer"/>
 							<xs:attribute name="amplifier" type="xs:integer"/>
 							<xs:attribute name="ambient" type="xs:boolean"/>
@@ -818,6 +885,7 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
+
 	<xs:simpleType name="enchantmentValues">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="protection environmental"/>
@@ -844,7 +912,8 @@
 			<xs:enumeration value="arrow infinite" />
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="potions">
+
+	<xs:simpleType name="potionTypes">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="speed"/>
 			<xs:enumeration value="slow"/>
@@ -856,6 +925,7 @@
 			<xs:enumeration value="jump"/>
 			<xs:enumeration value="confusion"/>
 			<xs:enumeration value="regeneration"/>
+			<xs:enumeration value="damage resistance"/>
 			<xs:enumeration value="fire resistance"/>
 			<xs:enumeration value="water breathering"/>
 			<xs:enumeration value="invisiblity"/>
@@ -870,7 +940,8 @@
 			<xs:enumeration value="saturation"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="damage">
+
+	<xs:simpleType name="damageTypes">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="contact"/>
 			<xs:enumeration value="entity attack"/>
@@ -896,7 +967,8 @@
 			<xs:enumeration value="custom"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="entities">
+
+	<xs:simpleType name="entityTypes">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="Arrow"/>
 			<xs:enumeration value="Egg"/>
@@ -948,7 +1020,8 @@
 			<xs:enumeration value="Zombie"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="mobs">
+
+	<xs:simpleType name="mobTypes">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="creeper"/>
 			<xs:enumeration value="skeletion"/>
@@ -975,6 +1048,7 @@
 			<xs:enumeration value="villager"/>
 		</xs:restriction>
 	</xs:simpleType>
+
 	<xs:simpleType name="spawnEvents">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="natural"/>
@@ -1003,20 +1077,23 @@
 			<xs:enumeration value="default"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="causes">
+
+	<xs:simpleType name="eventCauses">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="player"/>
 			<xs:enumeration value="explosion"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="includes">
+
+	<xs:simpleType name="includeValues">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="blitz-global.xml"/>
 			<xs:enumeration value="gs-classes.xml"/>
 			<xs:enumeration value="tutorial.xml"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="Regions">
+
+	<xs:complexType name="regionTypes">
 		<xs:sequence>
 			<xs:element name="cuboid" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
@@ -1040,7 +1117,7 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="cirlce" minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="circle" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string" >
@@ -1074,7 +1151,7 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			   <xs:element name="block"  minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="block"  minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string" >
@@ -1100,7 +1177,7 @@
 			<xs:element name="union" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:complexContent>
-						<xs:extension base="Regions">
+						<xs:extension base="regionTypes">
 							<xs:attribute name="name" type="xs:string"/>
 						</xs:extension>
 					</xs:complexContent>
@@ -1109,7 +1186,7 @@
 			<xs:element name="negative" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:complexContent>
-						<xs:extension base="Regions">
+						<xs:extension base="regionTypes">
 							<xs:attribute name="name" type="xs:string"/>
 						</xs:extension>
 					</xs:complexContent>
@@ -1118,7 +1195,7 @@
 			<xs:element name="complement" minOccurs="0" maxOccurs="unbounded" >
 				<xs:complexType>
 					<xs:complexContent>
-						<xs:extension base="Regions">
+						<xs:extension base="regionTypes">
 							<xs:attribute name="name" type="xs:string"/>
 						</xs:extension>
 					</xs:complexContent>
@@ -1127,7 +1204,7 @@
 			<xs:element name="intersect" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:complexContent>
-						<xs:extension base="Regions">
+						<xs:extension base="regionTypes">
 							<xs:attribute name="name" type="xs:string"/>
 						</xs:extension>
 					</xs:complexContent>
@@ -1135,7 +1212,8 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="FilterTypes">
+
+	<xs:complexType name="filterTypes">
 		<xs:sequence>
 			<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
@@ -1149,8 +1227,8 @@
 			<xs:element name="team" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="block" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="spawn" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="mob" type="mobs" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="entity" type="entities" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="mob" type="mobTypes" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="entity" type="entityTypes" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="kill-streak" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
@@ -1176,14 +1254,15 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="cause" type="causes" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="cause" type="eventCauses" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="not" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="one" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="all" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="any" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="KillRewardFilterTypes">
+
+	<xs:complexType name="killRewardfilterTypes">
 		<xs:sequence>
 			<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
@@ -1197,8 +1276,8 @@
 			<xs:element name="team" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="block" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="spawn" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="mob" type="mobs" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="entity" type="entities" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="mob" type="mobTypes" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="entity" type="entityTypes" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="kill-streak" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
@@ -1224,14 +1303,15 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="cause" type="causes" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="cause" type="eventCauses" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="not" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="one" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="all" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="any" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="TutorialType">
+
+	<xs:complexType name="tutorialType">
 		<xs:sequence>
 			<xs:element name="message" minOccurs="0" maxOccurs="unbounded">
 				<xs:complexType>
@@ -1249,6 +1329,7 @@
 									<xs:extension base="xs:string">
 										<xs:attribute name="yaw" type="xs:integer"/>
 										<xs:attribute name="pitch" type="xs:integer"/>
+										<xs:attribute name="angle" type="xs:string"/>
 									</xs:extension>
 								</xs:simpleContent>
 							</xs:complexType>
@@ -1258,16 +1339,24 @@
 			</xs:element>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:complexType name="MobFilterTypes">
+
+	<xs:complexType name="mobfilterTypes">
 		<xs:sequence>
 			<xs:element name="spawn" type="spawnEvents"/>
-			<xs:element name="mob" type="mobs"/>
-			<xs:element name="entitiy" type="entities"/>
+			<xs:element name="mob" type="mobTypes"/>
+			<xs:element name="entitiy" type="entityTypes"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:simpleType name="TimePeriod">
+
+	<xs:simpleType name="timePeriod">
 		<xs:restriction base="xs:string">
 			<xs:pattern value="(\p{N}+)(y|mo|d|h|m|s)"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="booleanValue">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="on|off|true|false|no|yes"/>
 		</xs:restriction>
 	</xs:simpleType>
 </xs:schema>
